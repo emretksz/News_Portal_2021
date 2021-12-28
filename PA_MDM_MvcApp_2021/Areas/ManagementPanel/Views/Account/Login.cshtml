@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodePen - A Pen by Mohithpoojary</title>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css'>
+
+    <link href="~/Content/css/Login.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- partial:index.partial.html -->
+
+    <div class="container">
+        <div class="screen">
+            <div class="screen__content">
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "login" }))
+                {
+
+         
+                <div class="login__field">
+                    <i class="login__icon fa fa-envelope" style="font-size:18px"></i>
+                    <input type="email" class="login__input"name="Email" required placeholder="Mail Adresi">
+                </div>
+
+                <div class="login__field">
+                    <i class="login__icon fas fa-lock"></i>
+                    <input type="password" class="login__input" name="Password" required placeholder="Şifre">
+                </div>
+
+                <div class="row">
+                    <button class="button login__submit col-4">
+                        <span class="button__text" style="font-size:13px">Giriş Yap</span>
+                        <i class="button__icon fas fa-chevron-right"></i>
+                    </button>
+                    <a href="@Url.Action("UserCreate","Account")" style="font-size:13px;" class="button login__submit col-4">Kayıt Ol<i class="button__icon fas fa-chevron-right"></i></a>
+                    <a href="@Url.Action("Index","Home",new { area=""})" style="font-size:13px;" class="button login__submit col-4">Siteye Dön<i class="button__icon fas fa-chevron-right"></i></a>
+
+                </div>
+
+          }
+
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>
+        </div>
+    </div>
+    <!-- partial -->
+
+</body>
+</html>
+

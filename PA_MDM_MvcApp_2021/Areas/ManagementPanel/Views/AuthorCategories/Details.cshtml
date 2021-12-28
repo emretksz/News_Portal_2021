@@ -1,0 +1,50 @@
+﻿@model PA_MDM_MvcApp_2021.Models.AuthorCategories
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/ManagementPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Detaylar</h2>
+
+<div>
+    <h4>Yazar Kategorisi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+         Kategori Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorCategoryName)
+        </dd>
+
+        <dt>
+            Aktiflik Durumu
+        </dt>
+
+        <dd>
+           @if (Model.IsActive)
+           {
+            <span>Aktif</span>
+           }
+           else
+           {
+             <span>Pasif</span>  
+           }
+        </dd>
+
+        <dt>
+           Kayıt Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisterDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.AuthorCategoryId }) |
+    @Html.ActionLink("Listeye Dön", "Index")
+</p>

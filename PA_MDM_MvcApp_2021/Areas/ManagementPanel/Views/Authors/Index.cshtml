@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PA_MDM_MvcApp_2021.Models.Authors>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ManagementPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yazarlar</h2>
+
+<p>
+    @Html.ActionLink("Yazar Kaydet", "Create", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Yazarın Adı/Soyadı
+        </th>
+        <th>
+            Kategorisi
+        </th>
+        <th>
+            Resim
+        </th>
+        <th>
+            Aktiflik Durumu
+        </th>
+        <th>
+            Kayıt Tarihi
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorCategories.AuthorCategoryName)
+            </td>
+            <td>
+                <img src="@item.ImageURL" width="15%" alt="Alternate Text" />
+            </td>
+      
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegisterDate)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.AuthorId }) |
+                @Html.ActionLink("Detay", "Details", new { id = item.AuthorId }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.AuthorId })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PA_MDM_2021_DbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Abouts">
+    <Key>
+      <PropertyRef Name="AboutId" />
+    </Key>
+    <Property Name="AboutId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="Announcements">
+    <Key>
+      <PropertyRef Name="AnnouncementId" />
+    </Key>
+    <Property Name="AnnouncementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="700" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActvie" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="AuthorCategories">
+    <Key>
+      <PropertyRef Name="AuthorCategoryId" />
+    </Key>
+    <Property Name="AuthorCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorCategoryName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Authors" Relationship="Self.FK_Authors_AuthorCategories" FromRole="AuthorCategories" ToRole="Authors" />
+  </EntityType>
+  <EntityType Name="Authors">
+    <Key>
+      <PropertyRef Name="AuthorId" />
+    </Key>
+    <Property Name="AuthorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameSurname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FacebookURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="YoutubeURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TwitterURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="InstagramURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="AuthorCategoryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AuthorCategories" Relationship="Self.FK_Authors_AuthorCategories" FromRole="Authors" ToRole="AuthorCategories" />
+    <NavigationProperty Name="MdmBlogDetails" Relationship="Self.FK_MdmBlogDetails_Authors" FromRole="Authors" ToRole="MdmBlogDetails" />
+    <NavigationProperty Name="MisakBlogDetails" Relationship="Self.FK_MisakBlogDetails_Authors" FromRole="Authors" ToRole="MisakBlogDetails" />
+  </EntityType>
+  <EntityType Name="Contacts">
+    <Key>
+      <PropertyRef Name="ContactId" />
+    </Key>
+    <Property Name="ContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContactAdress" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ContactNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TwitterURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="InstagramURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FacebookURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="YoutubeURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LinkedinURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MdmBlogDetails">
+    <Key>
+      <PropertyRef Name="MdmId" />
+    </Key>
+    <Property Name="MdmId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuthorId" Type="Int32" Nullable="false" />
+    <Property Name="VideoURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Authors" Relationship="Self.FK_MdmBlogDetails_Authors" FromRole="MdmBlogDetails" ToRole="Authors" />
+    <NavigationProperty Name="MdmBlogs" Relationship="Self.FK_MdmBlogDetails_MdmBlogs" FromRole="MdmBlogDetails" ToRole="MdmBlogs" />
+  </EntityType>
+  <EntityType Name="MdmBlogs">
+    <Key>
+      <PropertyRef Name="MdmId" />
+    </Key>
+    <Property Name="MdmId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="MdmBlogDetails" Relationship="Self.FK_MdmBlogDetails_MdmBlogs" FromRole="MdmBlogs" ToRole="MdmBlogDetails" />
+    <NavigationProperty Name="MdmComments" Relationship="Self.FK_MdmComments_MdmBlogs" FromRole="MdmBlogs" ToRole="MdmComments" />
+    <NavigationProperty Name="Tags" Relationship="Self.TagToBlogs" FromRole="MdmBlogs" ToRole="Tags" />
+    <NavigationProperty Name="MdmCategories" Relationship="PA_MDM_2021_DbModel.FK_MdmBlogs_MdmCategories" FromRole="MdmBlogs" ToRole="MdmCategories" />
+  </EntityType>
+  <EntityType Name="MdmComments">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Comment" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GuestName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GuestMail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsReply" Type="Int32" Nullable="false" />
+    <Property Name="MdmId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MdmBlogs" Relationship="Self.FK_MdmComments_MdmBlogs" FromRole="MdmComments" ToRole="MdmBlogs" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="Users" Relationship="PA_MDM_2021_DbModel.FK_MdmComments_Users" FromRole="MdmComments" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="MisakBlogDetails">
+    <Key>
+      <PropertyRef Name="MisakBlogId" />
+    </Key>
+    <Property Name="MisakBlogId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AuthorId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Authors" Relationship="Self.FK_MisakBlogDetails_Authors" FromRole="MisakBlogDetails" ToRole="Authors" />
+    <NavigationProperty Name="MisakBlogs" Relationship="Self.FK_MisakBlogDetails_MisakBlogs" FromRole="MisakBlogDetails" ToRole="MisakBlogs" />
+    <Property Name="VideoURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MisakBlogs">
+    <Key>
+      <PropertyRef Name="MisakBlogId" />
+    </Key>
+    <Property Name="MisakBlogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tilte" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubTitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MisakCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="MisakLocationId" Type="Int32" Nullable="false" />
+    <Property Name="IsAcitive" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="MisakBlogDetails" Relationship="Self.FK_MisakBlogDetails_MisakBlogs" FromRole="MisakBlogs" ToRole="MisakBlogDetails" />
+    <NavigationProperty Name="MisakCategories" Relationship="Self.FK_MisakBlogs_MisakCategories" FromRole="MisakBlogs" ToRole="MisakCategories" />
+    <NavigationProperty Name="MisakLocations" Relationship="Self.FK_MisakBlogs_MisakLocations" FromRole="MisakBlogs" ToRole="MisakLocations" />
+    <NavigationProperty Name="MskComments" Relationship="Self.FK_MskComments_MisakBlogs" FromRole="MisakBlogs" ToRole="MskComments" />
+    <NavigationProperty Name="MisakTags" Relationship="Self.TagToMisakBlogs" FromRole="MisakBlogs" ToRole="MisakTags" />
+  </EntityType>
+  <EntityType Name="MisakCategories">
+    <Key>
+      <PropertyRef Name="MisakCategoryId" />
+    </Key>
+    <Property Name="MisakCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="MisakBlogs" Relationship="Self.FK_MisakBlogs_MisakCategories" FromRole="MisakCategories" ToRole="MisakBlogs" />
+  </EntityType>
+  <EntityType Name="MisakLocations">
+    <Key>
+      <PropertyRef Name="MisakLocationId" />
+    </Key>
+    <Property Name="MisakLocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LocationName" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="MisakBlogs" Relationship="Self.FK_MisakBlogs_MisakLocations" FromRole="MisakLocations" ToRole="MisakBlogs" />
+  </EntityType>
+  <EntityType Name="MisakTags">
+    <Key>
+      <PropertyRef Name="MisakTagId" />
+    </Key>
+    <Property Name="MisakTagId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TagName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="MisakBlogs" Relationship="Self.TagToMisakBlogs" FromRole="MisakTags" ToRole="MisakBlogs" />
+  </EntityType>
+  <EntityType Name="MskComments">
+    <Key>
+      <PropertyRef Name="MskCommentId" />
+    </Key>
+    <Property Name="MskCommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MskComment" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MskGuestName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MskMail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsReply" Type="Boolean" Nullable="false" />
+    <Property Name="RegsiterDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MisakBlogId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MisakBlogs" Relationship="Self.FK_MskComments_MisakBlogs" FromRole="MskComments" ToRole="MisakBlogs" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Users" Relationship="Self.RoleToUsers" FromRole="Roles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="TagId" />
+    </Key>
+    <Property Name="TagId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TagName" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="MdmBlogs" Relationship="Self.TagToBlogs" FromRole="Tags" ToRole="MdmBlogs" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ImageURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Roles" Relationship="Self.RoleToUsers" FromRole="Users" ToRole="Roles" />
+    <NavigationProperty Name="MdmComments" Relationship="PA_MDM_2021_DbModel.FK_MdmComments_Users" FromRole="Users" ToRole="MdmComments" />
+  </EntityType>
+  <Association Name="FK_Authors_AuthorCategories">
+    <End Role="AuthorCategories" Type="Self.AuthorCategories" Multiplicity="1" />
+    <End Role="Authors" Type="Self.Authors" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AuthorCategories">
+        <PropertyRef Name="AuthorCategoryId" />
+      </Principal>
+      <Dependent Role="Authors">
+        <PropertyRef Name="AuthorCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MdmBlogDetails_Authors">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
+    <End Role="MdmBlogDetails" Type="Self.MdmBlogDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="AuthorId" />
+      </Principal>
+      <Dependent Role="MdmBlogDetails">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MisakBlogDetails_Authors">
+    <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
+    <End Role="MisakBlogDetails" Type="Self.MisakBlogDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Authors">
+        <PropertyRef Name="AuthorId" />
+      </Principal>
+      <Dependent Role="MisakBlogDetails">
+        <PropertyRef Name="AuthorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MdmBlogDetails_MdmBlogs">
+    <End Role="MdmBlogs" Type="Self.MdmBlogs" Multiplicity="1" />
+    <End Role="MdmBlogDetails" Type="Self.MdmBlogDetails" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MdmBlogs">
+        <PropertyRef Name="MdmId" />
+      </Principal>
+      <Dependent Role="MdmBlogDetails">
+        <PropertyRef Name="MdmId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MdmComments_MdmBlogs">
+    <End Role="MdmBlogs" Type="Self.MdmBlogs" Multiplicity="1" />
+    <End Role="MdmComments" Type="Self.MdmComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MdmBlogs">
+        <PropertyRef Name="MdmId" />
+      </Principal>
+      <Dependent Role="MdmComments">
+        <PropertyRef Name="MdmId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MisakBlogDetails_MisakBlogs">
+    <End Role="MisakBlogs" Type="Self.MisakBlogs" Multiplicity="1" />
+    <End Role="MisakBlogDetails" Type="Self.MisakBlogDetails" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MisakBlogs">
+        <PropertyRef Name="MisakBlogId" />
+      </Principal>
+      <Dependent Role="MisakBlogDetails">
+        <PropertyRef Name="MisakBlogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MisakBlogs_MisakCategories">
+    <End Role="MisakCategories" Type="Self.MisakCategories" Multiplicity="1" />
+    <End Role="MisakBlogs" Type="Self.MisakBlogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MisakCategories">
+        <PropertyRef Name="MisakCategoryId" />
+      </Principal>
+      <Dependent Role="MisakBlogs">
+        <PropertyRef Name="MisakCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MisakBlogs_MisakLocations">
+    <End Role="MisakLocations" Type="Self.MisakLocations" Multiplicity="1" />
+    <End Role="MisakBlogs" Type="Self.MisakBlogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MisakLocations">
+        <PropertyRef Name="MisakLocationId" />
+      </Principal>
+      <Dependent Role="MisakBlogs">
+        <PropertyRef Name="MisakLocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MskComments_MisakBlogs">
+    <End Role="MisakBlogs" Type="Self.MisakBlogs" Multiplicity="1" />
+    <End Role="MskComments" Type="Self.MskComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MisakBlogs">
+        <PropertyRef Name="MisakBlogId" />
+      </Principal>
+      <Dependent Role="MskComments">
+        <PropertyRef Name="MisakBlogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RoleToUsers">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+  </Association>
+  <Association Name="TagToBlogs">
+    <End Role="MdmBlogs" Type="Self.MdmBlogs" Multiplicity="*" />
+    <End Role="Tags" Type="Self.Tags" Multiplicity="*" />
+  </Association>
+  <Association Name="TagToMisakBlogs">
+    <End Role="MisakBlogs" Type="Self.MisakBlogs" Multiplicity="*" />
+    <End Role="MisakTags" Type="Self.MisakTags" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="MDMContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Abouts" EntityType="Self.Abouts" />
+    <EntitySet Name="Announcements" EntityType="Self.Announcements" />
+    <EntitySet Name="AuthorCategories" EntityType="Self.AuthorCategories" />
+    <EntitySet Name="Authors" EntityType="Self.Authors" />
+    <EntitySet Name="Contacts" EntityType="Self.Contacts" />
+    <EntitySet Name="MdmBlogDetails" EntityType="Self.MdmBlogDetails" />
+    <EntitySet Name="MdmBlogs" EntityType="Self.MdmBlogs" />
+    <EntitySet Name="MdmComments" EntityType="Self.MdmComments" />
+    <EntitySet Name="MisakBlogDetails" EntityType="Self.MisakBlogDetails" />
+    <EntitySet Name="MisakBlogs" EntityType="Self.MisakBlogs" />
+    <EntitySet Name="MisakCategories" EntityType="Self.MisakCategories" />
+    <EntitySet Name="MisakLocations" EntityType="Self.MisakLocations" />
+    <EntitySet Name="MisakTags" EntityType="Self.MisakTags" />
+    <EntitySet Name="MskComments" EntityType="Self.MskComments" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" />
+    <EntitySet Name="Tags" EntityType="Self.Tags" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_Authors_AuthorCategories" Association="Self.FK_Authors_AuthorCategories">
+      <End Role="AuthorCategories" EntitySet="AuthorCategories" />
+      <End Role="Authors" EntitySet="Authors" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MdmBlogDetails_Authors" Association="Self.FK_MdmBlogDetails_Authors">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="MdmBlogDetails" EntitySet="MdmBlogDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MisakBlogDetails_Authors" Association="Self.FK_MisakBlogDetails_Authors">
+      <End Role="Authors" EntitySet="Authors" />
+      <End Role="MisakBlogDetails" EntitySet="MisakBlogDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MdmBlogDetails_MdmBlogs" Association="Self.FK_MdmBlogDetails_MdmBlogs">
+      <End Role="MdmBlogs" EntitySet="MdmBlogs" />
+      <End Role="MdmBlogDetails" EntitySet="MdmBlogDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MdmComments_MdmBlogs" Association="Self.FK_MdmComments_MdmBlogs">
+      <End Role="MdmBlogs" EntitySet="MdmBlogs" />
+      <End Role="MdmComments" EntitySet="MdmComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MisakBlogDetails_MisakBlogs" Association="Self.FK_MisakBlogDetails_MisakBlogs">
+      <End Role="MisakBlogs" EntitySet="MisakBlogs" />
+      <End Role="MisakBlogDetails" EntitySet="MisakBlogDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MisakBlogs_MisakCategories" Association="Self.FK_MisakBlogs_MisakCategories">
+      <End Role="MisakCategories" EntitySet="MisakCategories" />
+      <End Role="MisakBlogs" EntitySet="MisakBlogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MisakBlogs_MisakLocations" Association="Self.FK_MisakBlogs_MisakLocations">
+      <End Role="MisakLocations" EntitySet="MisakLocations" />
+      <End Role="MisakBlogs" EntitySet="MisakBlogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MskComments_MisakBlogs" Association="Self.FK_MskComments_MisakBlogs">
+      <End Role="MisakBlogs" EntitySet="MisakBlogs" />
+      <End Role="MskComments" EntitySet="MskComments" />
+    </AssociationSet>
+    <AssociationSet Name="RoleToUsers" Association="Self.RoleToUsers">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="TagToBlogs" Association="Self.TagToBlogs">
+      <End Role="MdmBlogs" EntitySet="MdmBlogs" />
+      <End Role="Tags" EntitySet="Tags" />
+    </AssociationSet>
+    <AssociationSet Name="TagToMisakBlogs" Association="Self.TagToMisakBlogs">
+      <End Role="MisakBlogs" EntitySet="MisakBlogs" />
+      <End Role="MisakTags" EntitySet="MisakTags" />
+    </AssociationSet>
+    <EntitySet Name="MdmCategories" EntityType="PA_MDM_2021_DbModel.MdmCategories" />
+    <AssociationSet Name="FK_MdmBlogs_MdmCategories" Association="PA_MDM_2021_DbModel.FK_MdmBlogs_MdmCategories">
+      <End Role="MdmCategories" EntitySet="MdmCategories" />
+      <End Role="MdmBlogs" EntitySet="MdmBlogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MdmComments_Users" Association="PA_MDM_2021_DbModel.FK_MdmComments_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="MdmComments" EntitySet="MdmComments" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="MdmCategories">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="RegisterDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="MdmBlogs" Relationship="PA_MDM_2021_DbModel.FK_MdmBlogs_MdmCategories" FromRole="MdmCategories" ToRole="MdmBlogs" />
+  </EntityType>
+  <Association Name="FK_MdmBlogs_MdmCategories">
+    <End Type="PA_MDM_2021_DbModel.MdmCategories" Role="MdmCategories" Multiplicity="1" />
+    <End Type="PA_MDM_2021_DbModel.MdmBlogs" Role="MdmBlogs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MdmCategories">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="MdmBlogs">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MdmComments_Users">
+    <End Type="PA_MDM_2021_DbModel.Users" Role="Users" Multiplicity="0..1" />
+    <End Type="PA_MDM_2021_DbModel.MdmComments" Role="MdmComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="MdmComments">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

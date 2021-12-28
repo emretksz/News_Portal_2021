@@ -1,0 +1,74 @@
+﻿@model IEnumerable<PA_MDM_MvcApp_2021.Models.MisakBlogs>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ManagementPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tilte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubTitle)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.IsAcitive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegisterDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MisakBlogDetails.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MisakCategories.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MisakLocations.LocationName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tilte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageURL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsAcitive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegisterDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MisakBlogDetails.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MisakCategories.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MisakLocations.LocationName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MisakBlogId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MisakBlogId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MisakBlogId })
+        </td>
+    </tr>
+}
+
+</table>

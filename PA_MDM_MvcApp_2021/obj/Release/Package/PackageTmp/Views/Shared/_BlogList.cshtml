@@ -1,0 +1,130 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model  PA_MDM_MvcApp_2021.Models.ViewModels.BlogViewModels
+ 
+<style>
+    .xc {
+    }
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+        .pagination li.active {
+            background-color: red;
+            color: white;
+            border-radius: 5px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+
+        .pagination a:hover:not(.active) {
+            background-color: #ddd;
+            border-radius: 5px;
+        }
+    .blog_item_img img {
+        max-width: 100%;
+        height: auto !important;
+    }
+     
+
+   
+    #SonYazilar {
+        width: 130px;
+        height: 100px;
+    }
+
+</style>
+<div class="row">
+    <div class="col-lg-8 mb-5 mb-lg-0">
+        <div class="blog_left_sidebar">
+            @foreach (var item in Model.MdmBlogs)
+            {
+
+
+                <article class="blog_item">
+                    <div class="blog_item_img">
+                        <img class="card-img rounded-0" src="@item.ImageURL"  alt="">
+                        @*<a href="#" class="blog_item_date">
+                                <h3>15</h3>
+                                <p>Jan</p>
+                            </a>*@
+                    </div>
+
+                    <div class="blog_details">
+                        <a class="d-inline-block" href="@Url.Action("BlogDetails","Home",new {id=item.MdmId,author=item.MdmBlogDetails.Authors.AuthorId })">
+                            <h2>@item.Title</h2>
+                        </a>
+                        <p>
+                            @item.SubTitle
+                        </p>
+                        <ul class="blog-info-link">
+            
+                            <li style="font-size:15px;font-family:'Times New Roman', Times, serif"><i class="fa fa-user"></i>@item.MdmBlogDetails.Authors.NameSurname</li><!--Yazarın adı-->
+                            <li style="font-size:15px"><a href="#"><i class="fas fa-bullseye"></i> @item.MdmCategories.CategoryName</a></li><!--Yazının kategorisi-->
+
+                        </ul>
+                    </div>
+                </article>
+            }
+
+
+        </div>
+        
+
+        <nav class="blog-pagination justify-content-center d-flex">
+   
+                @Html.PagedListPager((IPagedList)Model.MdmBlogs, pageNumber => Url.Action("Blogs", new { pageNumber })  )
+
+
+        </nav>
+    </div>
+
+
+    <div class="col-lg-4">
+        <div class="blog_right_sidebar">
+
+
+            <aside class="single_sidebar_widget post_category_widget">
+                <h4 class="widget_title">Kategoriler</h4>
+                <ul class="list cat-list">
+                    @foreach (var item in Model.MdmCategories)
+                    {
+
+                        <li>
+                            <a href="@Url.Action("Blogs","Home",new {id=item.CategoryId })" onclick="CategoriGetir(@(item.CategoryId))" class="d-flex">
+                                <p>@item.CategoryName</p>
+
+                            </a>
+                        </li>
+                        //sayac++;
+
+                    }
+
+                </ul>
+            </aside>
+
+
+            <aside class="single_sidebar_widget popular_post_widget">
+                <h3 class="widget_title">Son Yazılar</h3>
+                @foreach (var item in Model.MdmBlogs.OrderByDescending(u=>u.IsActive==true).Take(5).ToList())
+                {
+
+                <div class="media post_item">
+                    <img src="@item.ImageURL" id="SonYazilar" alt="post">
+                    <div class="media-body">
+                        <a href="@Url.Action("BlogDetails","Home",new {id=item.MdmId, author=item.MdmBlogDetails.AuthorId })">
+                            <h3>@item.Title</h3>
+                        </a>
+                        <p>@item.RegisterDate.ToString("dd MMM yyyy")</p>
+                    </div>
+                </div>
+                }
+        
+            </aside>
+
+        </div>
+    </div>
+</div>

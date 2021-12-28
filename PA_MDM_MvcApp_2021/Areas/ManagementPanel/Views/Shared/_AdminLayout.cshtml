@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    @Html.Partial("_Head")
+
+
+    <script src="~/Areas/ManagementPanel/Content/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/ManagementPanel/Content/ckeditor/build-config.js"></script>
+    <script src="~/Areas/ManagementPanel/Content/ckeditor/styles.js"></script>
+
+    <link href="~/Content/css/Login.css" rel="stylesheet" />
+    <script src="~/Areas/ManagementPanel/Content/ckeditor/config.js"></script>
+    @*<script src="~/Areas/ManagementPanel/Content/ckeditor/plugins/imageresize/plugin.js"></script>*@
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        @Html.Partial("_SideBar")
+        <!-- End of Sidebar -->
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                @Html.Partial("_NavBar")
+                <!-- End of Topbar -->
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    @RenderBody()
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+            <!-- End of Main Content -->
+            <!-- Footer -->
+            @Html.Partial("_Footer")
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+    <!-- Scroll to Top Button-->
+    <!-- Logout Modal-->
+    <script>
+        CKEDITOR.replace('editor1', { enterMode: CKEDITOR.ENTER_BR, entities: false, basicEntities: false });
+
+    </script>
+    @*<script>
+        CKEDITOR.config.extraPlugins = "imageresize";
+    </script>*@
+
+
+
+
+
+
+
+
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Areas/ManagementPanel/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Areas/ManagementPanel/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Areas/ManagementPanel/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <!-- Page level plugins -->
+    <script src="~/Areas/ManagementPanel/Scripts/js/sb-admin-2.js"></script>
+    <script src="~/Areas/ManagementPanel/Content/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/Areas/ManagementPanel/Content/vendor/chart.js/Chart.min.js"></script>
+    <script src="~/Areas/ManagementPanel/Scripts/js/demo/chart-area-demo.js"></script>
+    <script src="~/Areas/ManagementPanel/Scripts/js/demo/chart-pie-demo.js"></script>
+
+
+</body>
+
+</html>

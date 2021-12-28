@@ -1,0 +1,62 @@
+﻿@model List<PA_MDM_MvcApp_2021.Models.Authors>
+@{
+    ViewBag.Title = "Authors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section _Header{
+
+    @Html.Partial("_Header")
+
+}
+@section Loading{
+    @Html.Partial("_Loading")
+}
+<section class="whats-news-area pt-50 pb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="section-tittle mb-30">
+                            <h3 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Yazarlarımız</h3>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Nav Card -->
+                        <div class="tab-content" id="nav-tabContent">
+                            <!-- card one -->
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <div class="whats-news-caption">
+                                    <div class="row">
+                                        @foreach (var item in Model.ToList())
+                                        {
+
+                                            <div class="col-lg-3 col-md-3">
+                                                <div class="single-what-news mb-100">
+                                                    <div class="what-img">
+                                                        @*<img src="@item.ImageURL" alt="YAZARIN RESMİ">*@
+                                                    </div>
+                                                    <div class="what-cap">
+                                                        <a href="@Url.Action("AuthorDetails","Home",new {id=item.AuthorId })" class="color-1">   <span class="color1">@item.NameSurname</span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <!-- Card two -->
+
+                            </div>
+                            <!-- End Nav Card -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+

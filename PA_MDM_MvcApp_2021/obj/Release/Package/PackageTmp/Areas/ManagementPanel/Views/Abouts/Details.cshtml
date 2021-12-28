@@ -1,0 +1,67 @@
+﻿@model PA_MDM_MvcApp_2021.Models.Abouts
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/ManagementPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Abouts</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Başlık
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            Açıklama
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            Resim
+        </dt>
+
+        <dd>
+           
+            <img src="@Model.ImageURL"width="18%" alt="Alternate Text" />
+        </dd>
+
+        <dt>
+           Aktiflik Durumu
+        </dt>
+
+        <dd>
+            @if (Model.IsActive)
+            {
+                <span>Aktif</span>
+            }
+            else
+            {
+        <span>Pasif</span>
+            }
+        </dd>
+
+        <dt>
+           Kayıt Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisterDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.AboutId }) |
+    @Html.ActionLink("Listeye Dön", "Index")
+</p>

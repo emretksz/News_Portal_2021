@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PA_MDM_MvcApp_2021.Models.Announcements>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ManagementPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Duyuru Sayfası</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           <span>Başlık</span>
+        </th>
+        <th>
+            <span>Açıklama</span>
+        </th>
+        <th>
+           <span>Resim</span>
+        </th>
+        <th>
+           <span>Aktiflik Durumu</span>
+        </th>
+        <th>
+           <span>Kayıt Tarihi</span>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            <img src="@item.ImageURL"width="15%" alt="Alternate Text" />
+        </td>
+        <td>
+            @if (item.IsActvie)
+            {
+                <span>Aktif</span>
+            }
+            else
+            {
+                <span>Pasif</span>
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegisterDate)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.AnnouncementId }) |
+            @Html.ActionLink("Detaya Git", "Details", new { id=item.AnnouncementId }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.AnnouncementId })
+        </td>
+    </tr>
+}
+
+</table>

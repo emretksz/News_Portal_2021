@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="580d3748bbb849af8a6fa8d9763d5001" Name="Diagram1">
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.Abouts" Width="1.5" PointX="5.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.Announcements" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.AuthorCategories" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.Authors" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.Contacts" Width="1.5" PointX="9.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.MdmBlogDetails" Width="1.5" PointX="13" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.MdmBlogs" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.MdmComments" Width="1.5" PointX="10" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.MisakBlogDetails" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.MisakBlogs" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.MisakCategories" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.MisakLocations" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.MisakTags" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.MskComments" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.Roles" Width="1.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.Tags" Width="1.5" PointX="10" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.Users" Width="1.5" PointX="12" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="PA_MDM_2021_DbModel.FK_Authors_AuthorCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="PA_MDM_2021_DbModel.FK_MdmBlogDetails_Authors" ManuallyRouted="false" />
+        <AssociationConnector Association="PA_MDM_2021_DbModel.FK_MisakBlogDetails_Authors" ManuallyRouted="false" />
+        <AssociationConnector Association="PA_MDM_2021_DbModel.FK_MdmBlogDetails_MdmBlogs" ManuallyRouted="false" />
+        <AssociationConnector Association="PA_MDM_2021_DbModel.FK_MdmComments_MdmBlogs" ManuallyRouted="false" />
+        <AssociationConnector Association="PA_MDM_2021_DbModel.FK_MisakBlogDetails_MisakBlogs" ManuallyRouted="false" />
+        <AssociationConnector Association="PA_MDM_2021_DbModel.FK_MisakBlogs_MisakCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="PA_MDM_2021_DbModel.FK_MisakBlogs_MisakLocations" ManuallyRouted="false" />
+        <AssociationConnector Association="PA_MDM_2021_DbModel.FK_MskComments_MisakBlogs" ManuallyRouted="false" />
+        <AssociationConnector Association="PA_MDM_2021_DbModel.RoleToUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="PA_MDM_2021_DbModel.TagToBlogs" ManuallyRouted="false" />
+        <AssociationConnector Association="PA_MDM_2021_DbModel.TagToMisakBlogs" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PA_MDM_2021_DbModel.MdmCategories" Width="1.5" PointX="6.875" PointY="0.75" />
+        <AssociationConnector Association="PA_MDM_2021_DbModel.FK_MdmBlogs_MdmCategories" />
+        <AssociationConnector Association="PA_MDM_2021_DbModel.FK_MdmComments_Users" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

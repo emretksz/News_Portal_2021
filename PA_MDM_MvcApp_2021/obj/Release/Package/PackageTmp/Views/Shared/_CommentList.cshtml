@@ -1,0 +1,119 @@
+﻿@model List<PA_MDM_MvcApp_2021.Models.MdmComments>
+
+<style>
+    #yorumResmi {
+        width: 50px;
+        height: 50px;
+    }
+</style>
+@foreach (var item in Model.Where(u => u.IsReply == 0).ToList())
+{
+    <div class="single-comment justify-content-between d-flex">
+
+
+        <div class="user justify-content-between d-flex">
+
+            @if (item.UserId != null)
+            {
+                <div class="thumb">
+                    <img src="@item.Users.ImageURL" id="yorumResmi" alt="">
+
+                </div>
+
+
+            }
+            else
+            {
+
+                <div class="thumb">
+                    <img src="~/Content/img/Milli Düşünce Merkezi yorum.jpg" id="yorumResmi" alt="">
+
+                </div>
+            }
+
+
+
+
+            <div class="desc">
+
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-items-center">
+
+                        <h4 id="@item.CommentId">
+                            <a>
+                                @item.GuestName
+
+                            </a>
+                        </h4>
+
+                        @*<p class="date"> </p>*@
+                    </div>
+
+                    <div class="reply-btn">
+                        <p id="@item.CommentId" hidden>@item.GuestName</p>
+                        <a class="btn-reply text-uppercase" style="font-size:10px"><i class="fa fa-share" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <p class="comment">
+                    @item.Comment
+                </p>
+            </div>
+        </div>
+
+
+
+    </div>
+    <hr />
+    foreach (var yorum in Model.Where(u => u.IsReply == item.CommentId))
+    {
+        <div class="single-comment justify-content-between d-flex">
+            <div class="user justify-content-between d-flex">
+
+
+                @if (yorum.UserId != null)
+                {
+                    <div class="thumb">
+                        <img src="@yorum.Users.ImageURL" id="yorumResmi" alt="">
+
+                    </div>
+
+
+                }
+                else
+                {
+
+                    <div class="thumb">
+                        <img src="~/Content/img/Milli Düşünce Merkezi yorum.jpg" id="yorumResmi" alt="">
+
+                    </div>
+                }
+
+
+
+                <div class="desc">
+                    <span>Cevap olarak :</span>
+                    <p class="comment">
+                        @yorum.Comment
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <div class="d-flex align-items-center">
+
+                            <h4 id="@yorum.CommentId">
+                                <a>
+                                    @yorum.GuestName
+
+                                </a>
+                            </h4>
+                            @*<p class="date"> </p>*@
+                        </div>
+                        <div class="reply-btn">
+                            <p id="@yorum.CommentId" hidden>@yorum.GuestName</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+}

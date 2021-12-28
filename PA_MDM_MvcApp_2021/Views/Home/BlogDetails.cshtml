@@ -1,0 +1,259 @@
+﻿@model PA_MDM_MvcApp_2021.Models.MdmBlogs
+@{
+    ViewBag.Title = "BlogDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section _Header{
+
+    @Html.Partial("_Header")
+
+}
+@section Loading{
+    @Html.Partial("_Loading")
+}
+<style>
+
+    #SonYazilar {
+        width: 130px;
+        height: 80px;
+    }
+
+    #xd {
+        width: 330px;
+        height: 375px;
+    }
+
+    p img {
+        max-width: 100%;
+        height: auto !important;
+    }
+
+    .blog_details img {
+        max-width: 100%;
+        height: auto !important;
+    }
+
+    #x {
+        width: 770px;
+        height: auto !important;
+    }
+</style>
+<section class="blog_area single-post-area section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8 posts-list">
+
+                <div class="single-post">
+                    <div class="feature-img">
+                        <!--blog Images-->
+                        <img class="img-fluid" src="@Model.ImageURL" id="x" alt="">
+                    </div>
+                    <div class="blog_details">
+                        <h2>
+                            <!--Title-->
+                            @Model.Title
+                        </h2>
+                        <ul class="blog-info-link mt-3 mb-4">
+                            <!--YAZININ KATEGORİSİ-->
+                            <li><a href="#"><i class="fa fa-user"></i> @Model.MdmCategories.CategoryName</a></li>
+                            <!--YORUM SAYISI-->
+                            @*<li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>*@
+                        </ul>
+
+                        <!--Description-->
+                        <p class="excert">
+                            @Html.Raw(Model.MdmBlogDetails.Description)
+
+                        </p>
+                        @if (Model.MdmBlogDetails.VideoURL != "-" && Model.MdmBlogDetails.VideoURL != "" && Model.MdmBlogDetails.VideoURL != null)
+                        {
+
+                            <iframe src="@Model.MdmBlogDetails.VideoURL"
+                                    width="770"
+                                    height="350"
+                                    frameborder="0"
+                                    allowfullscreen=""></iframe>
+                        }
+
+                    </div>
+                </div>
+
+                <div class="navigation-top">
+                    <div class="d-sm-flex justify-content-between text-center">
+                        <p class="like-info">
+
+                        </p>
+                        <div class="col-sm-4 text-center my-2 my-sm-0">
+                            <!-- <p class="comment-count"><span class="align-middle"><i class="fa fa-comment"></i></span> 06 Comments</p> -->
+                        </div>
+
+
+                        <ul class="social-icons">
+                            @if (Model.MdmBlogDetails.Authors.FacebookURL != null && Model.MdmBlogDetails.Authors.FacebookURL != "-")
+                            {
+
+                                <li><a href="@Model.MdmBlogDetails.Authors.FacebookURL"><i class="fab fa-facebook-f"></i></a></li>
+                            }
+                            @if (Model.MdmBlogDetails.Authors.TwitterURL != null && Model.MdmBlogDetails.Authors.TwitterURL != "-")
+                            {
+                                <li><a href="@Model.MdmBlogDetails.Authors.TwitterURL"><i class="fab fa-twitter"></i></a></li>
+                            }
+
+                        </ul>
+
+                    </div>
+
+                </div>
+                <div class="blog-author">
+                    <!--yazar-->
+
+                    <div class="media align-items-center">
+                        <img src="@Model.MdmBlogDetails.Authors.ImageURL" alt="">
+                        <div class="media-body">
+                            <a href="@Url.Action("AuthorDetails","Home",new {id=Model.MdmBlogDetails.Authors.AuthorId })">
+                                <h4>@Model.MdmBlogDetails.Authors.NameSurname</h4>
+                            </a>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="comments-area">
+                    <!--Yorumlar-->
+                    <h4>@Model.MdmComments.Count() / Yorum Sayısı</h4>
+                    <div class="comment-list">
+                        @Html.Partial("_CommentList", Model.MdmComments.ToList())
+                    </div>
+                </div>
+                @Html.Hidden("MdmId", Model.MdmId)
+
+                <div class="comment-form">
+                    <h4>Yorum Yaz:</h4><!--yorum yap-->
+                    <span id="yorumId" hidden></span>
+                    <span id="kime" hidden>Yorum Yapılan</span>
+                    <span id="yorumYapılan" hidden></span>
+                    <i class="fa fa-close" id="vazgec" hidden>Vazgeç</i>
+                    <form class="form-contact comment_form" action="#" id="commentForm">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                                              placeholder="Write Comment"></textarea>
+                                </div>
+                            </div>
+                            @{
+                                var kullaniciId = Session["KullaniciId"];
+                            }
+                            @if (Session["KullaniciAdi"] == null)
+                            {
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control" name="name" id="name" type="text" placeholder="Name">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input class="form-control" name="email" id="email" type="email" placeholder="Email">
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+
+                                @Html.Hidden("userId", kullaniciId)
+                            }
+
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <!--Yazarın diğer yazıları-->
+                <div class="blog_right_sidebar">
+
+                    <aside class="single_sidebar_widget popular_post_widget">
+                        <h3 class="widget_title">Yazarın Son Yazıları</h3>
+                        @{
+                            if (ViewBag.Yazar != null)
+                            {
+                                int ıd = ViewBag.Yazar;
+
+
+
+                                foreach (var item in (List<PA_MDM_MvcApp_2021.Models.Authors>)ViewBag.Yazılar)
+                                {
+
+                                    if (item.AuthorId == ıd)
+                                    {
+
+                                        foreach (var item2 in item.MdmBlogDetails.Take(5))
+                                        {
+                                            <div class="media post_item">
+                                                <img src="@item2.MdmBlogs.ImageURL" id="SonYazilar" alt="post">
+                                                <div class="media-body">
+
+                                                    <a href="@Url.Action("BlogDetails","Home",new { id=item2.MdmId,author=item.AuthorId})">
+                                                        <h3>@item2.MdmBlogs.Title</h3>
+                                                    </a>
+                                                    <p>@item2.MdmBlogs.RegisterDate.ToString("dd MMM yyyy")</p>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+
+
+                                }
+                            }
+                            else
+                            {
+                                <div class="media post_item">
+                                    <img src="@Model.ImageURL" id="SonYazilar" alt="post">
+                                    <div class="media-body">
+                                        <a href="@Url.Action("BlogDetails","Home",new { id=Model.MdmId ,authorId=Model.MdmBlogDetails.AuthorId})">
+                                            <h3>@Model.Title)</h3>
+                                        </a>
+                                        <p>@Model.RegisterDate.ToString("dd MMM yyyy")</p>
+                                    </div>
+                                </div>
+                            }
+
+
+
+                        }
+                        @*foreach (var item in sonuc)
+                            {
+
+                                <div class="media post_item">
+                                    <img src="@item.MdmBlogs.ImageURL" alt="post">
+                                    <div class="media-body">
+                                        <a href="@Url.Action("BlogDetails","Home",new { id=item.MdmBlogs.MdmId ,authorId=item.AuthorId})">
+                                            <h3>@item.MdmBlogs.Title.Substring(0, 30)</h3>
+                                        </a>
+                                        <p>@item.MdmBlogs.RegisterDate.ToString("dd MMM yyyy")</p>
+                                    </div>
+                                </div>
+                            }*@
+
+                    </aside>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts{
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+
+    <script src="~/Scripts/BlogJs.js"></script>
+
+}
+

@@ -1,0 +1,98 @@
+﻿@model PA_MDM_MvcApp_2021.Models.Authors
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/ManagementPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Detay</h2>
+
+<div>
+    <h4>Yazar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+             Yazarın Adı/Soyadı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameSurname)
+        </dd>
+
+        <dt>
+            Resim
+        </dt>
+
+        <dd>
+            <img src="@Model.ImageURL" width="15%" alt="Alternate Text" />
+        </dd>
+
+        <dt>
+           Facebook
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FacebookURL)
+        </dd>
+
+        <dt>
+            Youtube
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YoutubeURL)
+        </dd>
+
+        <dt>
+            Twitter
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TwitterURL)
+        </dd>
+
+        <dt>
+           Instagram
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstagramURL)
+        </dd>
+
+        <dt>
+            Aktiflik Durumu
+        </dt>
+
+        <dd>
+            @if (Model.IsActive)
+            {
+            <span>Aktif</span>
+            }
+            else
+            {
+        <span>Pasif</span>
+            }
+        </dd>
+
+        <dt>
+           Kayıt Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisterDate)
+        </dd>
+
+        <dt>
+            Yazarın Kategorisi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorCategories.AuthorCategoryName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AuthorId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

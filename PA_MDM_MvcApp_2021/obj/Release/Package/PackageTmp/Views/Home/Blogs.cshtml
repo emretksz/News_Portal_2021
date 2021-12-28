@@ -1,0 +1,28 @@
+﻿@model  PA_MDM_MvcApp_2021.Models.ViewModels.BlogViewModels
+@{
+    ViewBag.Title = "Blogs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section _Header{
+
+    @Html.Partial("_Header")
+
+}
+@section Loading{
+    @Html.Partial("_Loading")
+}
+<section class="blog_area section-padding">
+    <div class="container">
+
+        <div id="BlogList">
+            @Html.Partial("_BlogList", Model)
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+

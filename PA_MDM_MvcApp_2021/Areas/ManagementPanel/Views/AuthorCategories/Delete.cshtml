@@ -1,0 +1,56 @@
+﻿@model PA_MDM_MvcApp_2021.Models.AuthorCategories
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/ManagementPanel/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Sil</h2>
+
+<h3>Silmekten Emin Misin?</h3>
+<div>
+    <h4>Yazar Kategorisi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Kategori Adı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorCategoryName)
+        </dd>
+
+        <dt>
+          Aktiflik Durumu
+        </dt>
+
+        <dd>
+            @if (Model.IsActive)
+            {
+            <span>Aktif</span>
+            }
+            else
+            {
+        <span>Pasif</span>
+            }
+        </dd>
+
+        <dt>
+            Kayıt Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegisterDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Listey Dön", "Index")
+        </div>
+    }
+</div>

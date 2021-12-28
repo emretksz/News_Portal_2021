@@ -1,0 +1,153 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<PA_MDM_MvcApp_2021.Models.MdmBlogs>
+@{
+    ViewBag.Title = "AuthorDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section _Header{
+
+    @Html.Partial("_Header")
+
+}
+@section Loading{
+    @Html.Partial("_Loading")
+}
+
+<style>
+
+
+
+    #Populer {
+        height: 200px;
+    }
+
+    .blog-pagination {
+        margin-top: 0px;
+    }
+
+    .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+    .pagination li.active {
+        background-color: red;
+        color: white;
+        border-radius: 5px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin-bottom: 25px;
+    }
+
+    .pagination a:hover:not(.active) {
+        background-color: #ddd;
+        border-radius: 5px;
+    }
+</style>
+<section class="whats-news-area pt-50 pb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="section-tittle mb-30">
+                            <h3>Yazrın bütün yazıları</h3>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Nav Card -->
+                        <div class="tab-content" id="nav-tabContent">
+                            <!-- card one -->
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <div class="whats-news-caption">
+                                    <div class="row">
+
+                                        @foreach (var item in Model.ToList())
+                                        {
+                                            <div class="col-lg-4 col-md-4">
+
+                                                <div class="single-what-news single-bottom mb-100">
+                                                    <div class="what-img">
+                                                        <img src="@item.ImageURL" id="Populer" alt="">
+                                                    </div>
+
+                                                    <div class="trend-bottom-cap  mt-2">
+
+                                                        <span class="mt-5" style="color:red">@item.MdmCategories.CategoryName </span>
+
+                                                        <h5><a href="@Url.Action("BlogDetails","Home",new { id=item.MdmId,author=item.MdmBlogDetails.Authors.AuthorId})" style="color:black"> @item.Title...</a></h5>
+                                                        <p style="font-size:12px">@item.MdmBlogDetails.Authors.NameSurname / @item.RegisterDate.ToString("dd MMM yyyy")</p>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
+
+                                        }
+
+                                    </div>
+                                    <nav class="blog-pagination justify-content-center d-flex" style="margin-bottom:50px">
+                                        @Html.PagedListPager((IPagedList)Model, pagedNumber => Url.Action("AuthorDetails", new { pagedNumber }))
+                                    </nav>
+                                </div>
+                            </div>
+                            <!-- Card two -->
+
+                        </div>
+                        <!-- End Nav Card -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3">
+                @foreach (var item in Model.Take(1))
+                {
+
+                    <span style="height:10%; margin:0px;padding:3px"></span>
+                    <!-- Section Tittle -->
+                    <span>Yazar: </span>
+                    <span style="font-family:Arial;font-size:large">@item.MdmBlogDetails.Authors.NameSurname</span><!--Yazarın adı--><br />
+                    <span><i class="fa fa-share" aria-hidden="true"></i> Sosyal Medya</span>
+
+                }
+                <!-- Flow Socail -->
+                <div class="single-follow mb-35 mt-3">
+                    <div class="single-box">
+
+                        @foreach (var item in Model.Take(1))
+                        {
+
+                            <div class="follow-us align-items-center">
+                                <div class="follow-social">
+                                    <a href="@item.MdmBlogDetails.Authors.FacebookURL" style="color: black; font-family: 'Times New Roman', Times, serif; font-size: 15px"><img src="~/Content/img/news/icon-fb.png" style="margin:5px" alt="">Facebook </a>
+                                </div>
+
+                            </div>
+                            <div class="follow-us  align-items-center">
+                                <div class="follow-social">
+                                    <a href="@item.MdmBlogDetails.Authors.TwitterURL" style="color:black; font-family:'Times New Roman', Times, serif; font-size:15px">  <img src="~/Content/img/news/icon-tw.png" style="margin:5px" alt="">Twitter</a>
+                                </div>
+
+                            </div>
+                            <div class="follow-us  align-items-center">
+                                <div class="follow-social">
+                                    <a href="@item.MdmBlogDetails.Authors.InstagramURL" style="color: black; font-family: 'Times New Roman', Times, serif; font-size: 15px"><img src="~/Content/img/news/icon-ins.png" style="margin:5px" alt="">Instagram</a>
+                                </div>
+
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+                <!-- New Poster -->
+
+            </div>
+        </div>
+    </div>
+</section>
+

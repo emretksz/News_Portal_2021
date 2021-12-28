@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PA_MDM_2021_DbModelStoreContainer" CdmEntityContainer="MDMContext">
+    <EntitySetMapping Name="Abouts">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.Abouts">
+        <MappingFragment StoreEntitySet="Abouts">
+          <ScalarProperty Name="AboutId" ColumnName="AboutId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Announcements">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.Announcements">
+        <MappingFragment StoreEntitySet="Announcements">
+          <ScalarProperty Name="AnnouncementId" ColumnName="AnnouncementId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="IsActvie" ColumnName="IsActvie" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuthorCategories">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.AuthorCategories">
+        <MappingFragment StoreEntitySet="AuthorCategories">
+          <ScalarProperty Name="AuthorCategoryId" ColumnName="AuthorCategoryId" />
+          <ScalarProperty Name="AuthorCategoryName" ColumnName="AuthorCategoryName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.Authors">
+        <MappingFragment StoreEntitySet="Authors">
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="FacebookURL" ColumnName="FacebookURL" />
+          <ScalarProperty Name="YoutubeURL" ColumnName="YoutubeURL" />
+          <ScalarProperty Name="TwitterURL" ColumnName="TwitterURL" />
+          <ScalarProperty Name="InstagramURL" ColumnName="InstagramURL" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+          <ScalarProperty Name="AuthorCategoryId" ColumnName="AuthorCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.Contacts">
+        <MappingFragment StoreEntitySet="Contacts">
+          <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+          <ScalarProperty Name="ContactAdress" ColumnName="ContactAdress" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+          <ScalarProperty Name="TwitterURL" ColumnName="TwitterURL" />
+          <ScalarProperty Name="InstagramURL" ColumnName="InstagramURL" />
+          <ScalarProperty Name="FacebookURL" ColumnName="FacebookURL" />
+          <ScalarProperty Name="YoutubeURL" ColumnName="YoutubeURL" />
+          <ScalarProperty Name="LinkedinURL" ColumnName="LinkedinURL" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MdmBlogDetails">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.MdmBlogDetails">
+        <MappingFragment StoreEntitySet="MdmBlogDetails">
+          <ScalarProperty Name="MdmId" ColumnName="MdmId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+          <ScalarProperty Name="VideoURL" ColumnName="VideoURL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MdmBlogs">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.MdmBlogs">
+        <MappingFragment StoreEntitySet="MdmBlogs">
+          <ScalarProperty Name="MdmId" ColumnName="MdmId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MdmComments">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.MdmComments">
+        <MappingFragment StoreEntitySet="MdmComments">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+          <ScalarProperty Name="GuestMail" ColumnName="GuestMail" />
+          <ScalarProperty Name="IsReply" ColumnName="IsReply" />
+          <ScalarProperty Name="MdmId" ColumnName="MdmId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MisakBlogDetails">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.MisakBlogDetails">
+        <MappingFragment StoreEntitySet="MisakBlogDetails">
+          <ScalarProperty Name="VideoURL" ColumnName="VideoURL" />
+          <ScalarProperty Name="MisakBlogId" ColumnName="MisakBlogId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MisakBlogs">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.MisakBlogs">
+        <MappingFragment StoreEntitySet="MisakBlogs">
+          <ScalarProperty Name="MisakBlogId" ColumnName="MisakBlogId" />
+          <ScalarProperty Name="Tilte" ColumnName="Tilte" />
+          <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="MisakCategoryId" ColumnName="MisakCategoryId" />
+          <ScalarProperty Name="MisakLocationId" ColumnName="MisakLocationId" />
+          <ScalarProperty Name="IsAcitive" ColumnName="IsAcitive" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MisakCategories">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.MisakCategories">
+        <MappingFragment StoreEntitySet="MisakCategories">
+          <ScalarProperty Name="MisakCategoryId" ColumnName="MisakCategoryId" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MisakLocations">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.MisakLocations">
+        <MappingFragment StoreEntitySet="MisakLocations">
+          <ScalarProperty Name="MisakLocationId" ColumnName="MisakLocationId" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MisakTags">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.MisakTags">
+        <MappingFragment StoreEntitySet="MisakTags">
+          <ScalarProperty Name="MisakTagId" ColumnName="MisakTagId" />
+          <ScalarProperty Name="TagName" ColumnName="TagName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MskComments">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.MskComments">
+        <MappingFragment StoreEntitySet="MskComments">
+          <ScalarProperty Name="MskCommentId" ColumnName="MskCommentId" />
+          <ScalarProperty Name="MskComment" ColumnName="MskComment" />
+          <ScalarProperty Name="MskGuestName" ColumnName="MskGuestName" />
+          <ScalarProperty Name="MskMail" ColumnName="MskMail" />
+          <ScalarProperty Name="IsReply" ColumnName="IsReply" />
+          <ScalarProperty Name="RegsiterDate" ColumnName="RegsiterDate" />
+          <ScalarProperty Name="MisakBlogId" ColumnName="MisakBlogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.Tags">
+        <MappingFragment StoreEntitySet="Tags">
+          <ScalarProperty Name="TagId" ColumnName="TagId" />
+          <ScalarProperty Name="TagName" ColumnName="TagName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="RoleToUsers" TypeName="PA_MDM_2021_DbModel.RoleToUsers" StoreEntitySet="RoleToUsers">
+      <EndProperty Name="Roles">
+        <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="Users">
+        <ScalarProperty Name="UserId" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TagToBlogs" TypeName="PA_MDM_2021_DbModel.TagToBlogs" StoreEntitySet="TagToBlogs">
+      <EndProperty Name="MdmBlogs">
+        <ScalarProperty Name="MdmId" ColumnName="BlogId" />
+      </EndProperty>
+      <EndProperty Name="Tags">
+        <ScalarProperty Name="TagId" ColumnName="TagId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TagToMisakBlogs" TypeName="PA_MDM_2021_DbModel.TagToMisakBlogs" StoreEntitySet="TagToMisakBlogs">
+      <EndProperty Name="MisakBlogs">
+        <ScalarProperty Name="MisakBlogId" ColumnName="MisakBlogId" />
+      </EndProperty>
+      <EndProperty Name="MisakTags">
+        <ScalarProperty Name="MisakTagId" ColumnName="MisakTagId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="MdmCategories">
+      <EntityTypeMapping TypeName="PA_MDM_2021_DbModel.MdmCategories">
+        <MappingFragment StoreEntitySet="MdmCategories">
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

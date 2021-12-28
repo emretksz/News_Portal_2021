@@ -1,0 +1,102 @@
+﻿
+@model PA_MDM_MvcApp_2021.Models.ViewModels.AboutViewModels
+
+@{
+    ViewBag.Title = "Abouts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section _Header{
+
+    @Html.Partial("_Header")
+
+}
+@section Loading{
+    @Html.Partial("_Loading")
+}
+<style>
+    p img {
+        max-width: 100%;
+        height: auto !important;
+    }
+
+    .about-img img {
+        max-width: 100%;
+        height: auto !important;
+    }
+</style>
+
+<div class="about-area">
+    <div class="container">
+        <!-- Hot Aimated News Tittle-->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="trending-tittle">
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Trending Tittle -->
+                @foreach (var item in Model.Abouts)
+                {
+
+                    <div class="about-right mb-90">
+                        <div class="about-img">
+                            <img src="@item.ImageURL" alt="">
+                        </div>
+                        <div class="section-tittle mb-30 pt-30">
+                            <h3>@item.Title</h3>
+                        </div>
+                        <div class="about-prea">
+                            <p> @Html.Raw(item.Description)   </p>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-lg-4">
+                <!-- Section Tittle -->
+                <div class="section-tittle mb-40">
+                    <h3>Sosyal Medya Hesaplarımız</h3>
+                </div>
+                <!-- Flow Socail -->
+                <div class="single-follow mb-45">
+                    <div class="single-box">
+
+                        @foreach (var item in Model.Contacts)
+                        {
+                            <div class="follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <a href="@item.FacebookURL" style="color:black;margin:2px;padding:2px;font-size:15px"><img src="~/Content/img/news/icon-fb.png" style="margin:1px" alt=""> Facebook</a>
+                                </div>
+
+                            </div>
+                            <div class="follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <a href="@item.TwitterURL" style="color: black; margin: 2px; padding: 2px; font-size: 15px "><img src="~/Content/img/news/icon-tw.png" style="margin:4px" alt="">Twitter</a>
+                                </div>
+
+                            </div>
+                            <div class="follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <a href="@item.InstagramURL" style="color: black; margin: 2px; font-size: 15px"><img src="~/Content/img/news/icon-ins.png" style="margin:4px" alt="">Instagram</a>
+                                </div>
+
+                            </div>
+                            <div class="follow-us d-flex align-items-center">
+                                <div class="follow-social">
+                                    <a href="@item.YoutubeURL" style="color: black; margin: 2px; font-size: 15px"><img src="~/Content/img/news/icon-yo.png" style="margin:4px" alt="">Youtube</a>
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                </div>
+                <!-- New Poster -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
